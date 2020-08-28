@@ -5,11 +5,18 @@ import java.util.Scanner;
 
 public class Main {
 
+   static Scanner sc = new Scanner(System.in);
+   static Random random = new Random();
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Random random = new Random();
 
         //1
+        guessNum();
+        //2
+        guessWord();
+    }
+
+    static void guessNum() {
         int b;
         boolean win = false;
         do {
@@ -36,8 +43,9 @@ public class Main {
             System.out.println("print 0 if you want to stop");
             b = sc.nextInt();
         } while (b !=0);
+    }
 
-        //2
+    static void guessWord() {
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
                 "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
                 "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
@@ -64,4 +72,5 @@ public class Main {
         System.out.println("You win");
 
     }
+
 }

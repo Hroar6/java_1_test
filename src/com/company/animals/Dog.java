@@ -1,34 +1,18 @@
 package com.company.animals;
 
-public class Dog extends Animal {
-    private final int maxRun = 500;
-    private final int maxSwim = 10;
-    private static int count = 0;
+public class Dog {
+    private String name;
 
     public Dog(String name) {
-        super(name);
-        count++;
+        this.name = name;
     }
 
-    public static int getCount() {
-        return count;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void swim(int distance) {
-        if (distance <= maxSwim) {
-            System.out.println(name + " проплыл " + distance + " метров");
-        } else {
-            System.out.println(name + " не смог проплыть " + distance + " метров");
-        }
-    }
-
-    @Override
-    public void run(int distance) {
-        if (distance <= maxRun) {
-            System.out.println(name + " пробежал " + distance + " метров");
-        } else {
-            System.out.println(name + " не смог пробежать " + distance + " метров");
-        }
+    public void scare(Cat cat) {
+        System.out.println("Dog " + name + " gav gav " + cat.getName());
+        cat.fear(this);
     }
 }

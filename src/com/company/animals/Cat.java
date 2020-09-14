@@ -1,35 +1,35 @@
 package com.company.animals;
 
-public class Cat extends Animal {
-    private final int maxRun = 100;
-    private final int maxSwim = 0;
-    private static int count = 0;
+public class Cat {
+    private String name;
+    private boolean satiety;
+    private int needToSatiety;
 
-    public Cat(String name) {
-        super(name);
-        count++;
+    public Cat(String name, int needToSatiety) {
+        this.name = name;
+        this.satiety = false;
+        this.needToSatiety = needToSatiety;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
-    @Override
-    public void swim(int distance) {
-        if (distance < maxSwim) {
-            System.out.println(name + " проплыл " + distance + " метров");
-        } else {
-            System.out.println(name + " не умеет плавать");
+    public void eat(Plate plate) {
+        if(plate.getFood() - needToSatiety >= 0) {
+//            System.out.println("Cat " + name + " eat...");
+            plate.decreaseFood(needToSatiety);
+            satiety = true;
         }
     }
 
-    @Override
-    public void run(int distance) {
-        if (distance <= maxRun) {
-            System.out.println(name + " пробежал " + distance + " метров");
-        } else {
-            System.out.println(name + " не смог пробежать " + distance + " метров");
-        }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isSatiety() {
+        return satiety;
+    }
+
+    public void fear(Dog dog) {
+        System.out.println("Cat " + name + " fear dog " + dog.getName());
     }
 
 }

@@ -1,44 +1,29 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        String[][] w = {
-                {"5", "3", "1", "1"},
-                {"3", "3", "2", "1"},
-                {"6", "0", "2", "1"},
-                {"2", "10", "3", "5"}
-        };
-
-        try {
-            System.out.println(arrCheckSize(w));
-        } catch (MyArraySizeException | MyArrayDataException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    static int arrCheckSize(String[][] arr) throws MyArrayDataException, MyArraySizeException {
-        int sum = 0;
-        int arrLength = 4;
-        if (arr.length != arrLength) {
-            throw new MyArraySizeException("Количество строк не равно " + arrLength);
-        }
-        for (int i = 0; i < arrLength; i++) {
-            if (arr[i].length != arrLength) {
-                throw new MyArraySizeException("Количество столбов в " + i + " строке не равено " + arrLength);
-            }
-        }
-//        System.out.println("Массив прошел проверочку");
-
+        String[] arr = {"a", "b", "c", "d", "c", "c", "d", "b", "a", "y", "a", "b"};
+        HashMap<String, Integer> hm = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                try {
-                    sum += Integer.parseInt(arr[i][j]);
-                } catch (NumberFormatException e) {
-                    throw new MyArrayDataException("Не возможно преобразовать [" + i + "][" + j + "] элемент");
-                }
-            }
+            Integer count = hm.getOrDefault(arr[i], 0);
+            hm.put(arr[i], count + 1);
         }
-        return sum;
+        System.out.println(hm);
+        ArrayList<String> al = new ArrayList<>();
+        al.add("ывафы");
+
+        PhoneBook phoneBook = new PhoneBook();
+        phoneBook.add("Иванов", "+791828313");
+        phoneBook.add("Иванов", al);
+        phoneBook.add("Иванов", new String[]{"+1424", "123"});
+        phoneBook.add("Иванов", new String[]{"5432", "+99999"});
+        phoneBook.add("Иванов", new String[]{"+98349325"});
+        phoneBook.add("Иванов", "+77777");
+
+        System.out.println(phoneBook.get("Иванов"));
     }
 }
